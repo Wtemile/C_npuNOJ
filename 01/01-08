@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include<math.h>
+#define R 6371
+#define PI 3.1415926
+double rad(double degree)
+{
+    return degree*PI/180.0;
+}
+int main()
+{
+    double x1,x2,y1,y2;
+    scanf("%lf%lf",&x1,&y1);
+    scanf("%lf%lf",&x2,&y2);
+    double a=rad(x1)-rad(x2);
+    a=cos(a);
+    a=(1-a)/2;
+    double b=rad(y1)-rad(y2);
+    b=cos(b);
+    b=(1-b)/2;
+    double c;
+    c=a+cos(rad(x1))*cos(rad(x2))*b;
+    double d;
+    d=1-2*c;
+    d=acos(d);
+    d*=R;
+    printf("%.4lfkm\n",d);
+    return 0;
+}
