@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main()
+{
+    long m,n;
+    scanf("%ld%ld",&m,&n);
+    long b=0,s=m;
+    while(s!=0)
+    {
+        s=s/10;
+        b++;
+    }
+    if(b<n)
+    {
+        int a=n-b;
+        for(a=a;a>0;a--) printf("%d",0);
+        printf("%d\n",m);
+    }
+    else printf("%d\n",m);
+    return 0;
+}
