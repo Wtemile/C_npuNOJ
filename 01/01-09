@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include<math.h>
+int main()
+{
+    double v,t,w1;
+    int w;
+    scanf("%lf%lf",&v,&t);
+    w1=13.12+0.6215*t-11.37*(pow(v,0.16))+0.3965*t*(pow(v,0.16));
+    w=(w1+0.5);
+    printf("%d",w);
+
+    return 0;
+}
