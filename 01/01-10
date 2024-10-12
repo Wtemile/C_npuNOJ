@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+double max(double a,double b)
+{
+    if(a>=b) return a;
+    else return b;
+}
+
+double min(double a,double b)
+{
+    if(a>=b) return b;
+    else return a;
+}
+
+
+int main()
+{
+    double R,G,B;
+    double r,g,b;
+    scanf("%lf%lf%lf",&r,&g,&b);      //易错：取地址运算符
+    R=r/255;                          //易错：两个整形相除只保留整数，则rgb的类型不能位整数
+    G=g/255;
+    B=b/255;
+    double MAX,MIN;
+    MAX=max(max(R,G),B);              //易错：没有提前定义MAX和MIN
+    MIN=min(min(R,G),B);
+    double h,s,v;
+    v=MAX;
+    s=(MAX-MIN)/MAX;
+    h=(MAX-R<=1.e-9)?(60*(0+(G-B)/(MAX-MIN))):(MAX-G<=1.E-9)?60*(2+(B-R)/(MAX-MIN)):60*(4+(R-G)/(MAX-MIN));
+    h=(h<0)?(h+360):h;
+    printf("%.4lf,%.4lf%%,%.4lf%%",h,100*s,100*v);    //使用两个%%来输出%
+
+
+    return 0;
+}
