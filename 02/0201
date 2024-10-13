@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+//计算（a+b+c+d)=n的组合数
+int main()
+{
+    long a=0,b=0,c=0,d=0,s=0,n=0;
+    scanf("%ld",&n);
+    for(a=0;a<=9 && a<=n;a++)            //保证不超出n
+    {
+        for(b=0;b<=9 && a+b<=n;b++)
+        {
+            for(c=0;c<=9 && a+b+c<=n;c++)
+            {
+                d=(n-a-b-c);
+                if (d>=0 && d<=9)       //保证d在范围之内
+                {
+                    s++;
+
+                }
+            }
+        }
+    }
+    printf("%ld\n",s);
+
+
+    return 0;
+}
+
+
