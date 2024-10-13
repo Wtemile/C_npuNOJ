@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <math.h>
+
+//检验一个数是否为对称数
+long digits(long a)
+{
+    long dig,b=a;
+    for(dig=0;b!=0;dig++)
+    {
+        b=b/10;
+    }
+    return dig;
+}
+
+int main()
+{
+    long n,ndig,num,i=1,half,num2;
+
+    scanf("%ld",&n);
+    ndig=digits(n);     //计算n的位数
+
+    if (ndig%2 != 0)    //对奇数情况下没有对称的中间位单独讨论
+    {
+        half = (ndig-1)/2;           //对奇数和欧服分类给half赋值
+        long middle=n/(int)(pow(10,(double)half))%10;
+        if (middle!=1 && middle != 8)
+        {
+            printf("No");
+            goto L1;
+        }
+    }
+    else half = ndig/2;
+
+
+    for(i=1;i<=half;i++)
+    {
+        num=(int)(n/(pow(10,(double)(i-1))))%10;
+        if(num!=1 && num!=8 && num!=6 && num!=9)
+        {
+            printf("No");
+            goto L1;
+        }
+        else
+        {
+            num2=(int)(n/(pow(10,(double)(ndig-i))))%10;
+            switch(num)
+            {
+            case 1:
+                {
+                    if (num2!=1)
+                    {
+                        printf("No");
+                        goto L1;
+                    }
+                    break;
+                }
+            case 8:
+                {
+                    if (num2!=8)
+                    {
+                        printf("No");
+                        goto L1;
+                    }
+                    break;
+                }
+            case 6:
+                {
+                    if (num2!=9)
+                    {
+                        printf("No");
+                        goto L1;
+                    }
+                    break;
+                }
+            case 9:
+                {
+                    if (num2!=6)
+                    {
+                        printf("No");
+                        goto L1;
+                    }
+                    break;
+                }
+            }
+
+        }
+    }
+    printf("Yes");
+
+
+    L1:return 0;
+}
