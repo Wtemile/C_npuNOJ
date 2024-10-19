@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main()
+{
+    long long a=0,b=0,m=0;
+    scanf("%lld%lld%lld",&a,&b,&m);
+    printf("%lld",(a%m)*(b%m)%m);
+
+
+    return 0;
+}
