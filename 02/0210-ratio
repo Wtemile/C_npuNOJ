@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+long long gcd(long long yynum1,long long yynum2)
+{
+    if(yynum1%=yynum2) gcd(yynum2,yynum1);
+    else return yynum2;
+}
+
+
+int main()
+{
+    double a=0;
+    scanf("%lf",&a);
+    long long result2=1;
+    for(result2=1;(a-(int)a);result2*=10) a*=10;
+    long long result1=(long long)a;
+    long long N=gcd(result1,result2);
+    result1 /= N;
+    result2 /= N;
+    printf("%lld/%lld",result1,result2);
+
+    return 0;
+}
